@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                 child: GoogleMap(
                   //Map widget from google_maps_flutter package
                   zoomGesturesEnabled: true, //enable Zoom in, out on map
-                  initialCameraPosition: const CameraPosition(
+                  initialCameraPosition: CameraPosition(
                     //innital position in map
                     target: showLocation, //initial position
                     zoom: 15.0, //initial zoom level
@@ -97,7 +97,7 @@ class _HomeState extends State<Home> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewPage('User 1')),
+                    MaterialPageRoute(builder: (context) => NewPage('Profile Page')),
                   );
                 },
               child: Icon(Icons.person, color: Colors.white),
@@ -106,11 +106,11 @@ class _HomeState extends State<Home> {
           Positioned(
             top: 20.0,
             left: 70.0,
-            child: GestureDetector(
+            child: InkWell(
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => NewPage('User 2')),
+                  MaterialPageRoute(builder: (context) => NewPage('Search Page')),
                 );
               },
               child: CircleAvatar(
@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
               onTap: () {
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NewPage('User 2')),
+                MaterialPageRoute(builder: (context) => NewPage('Settings Page')),
                 );
               },
             child: CircleAvatar(
@@ -157,9 +157,11 @@ class _HomeState extends State<Home> {
                       left: 20.0,
                       child: CircleAvatar(
                         radius: 20.0,
-                        backgroundColor: Colors.red,
-                        child: Icon(Icons.person, color: Colors.white),
-                      ),
+                        backgroundColor: Colors.black54,
+                        child: ClipOval(
+                          child: Icon(Icons.map)
+                        ),
+                      )
                     ),
                 ),
                 Padding(
@@ -169,9 +171,11 @@ class _HomeState extends State<Home> {
                     left: 20.0,
                     child: CircleAvatar(
                       radius: 20.0,
-                      backgroundColor: Colors.red,
-                      child: Icon(Icons.person, color: Colors.white),
-                    ),
+                      backgroundColor: Colors.black54,
+                      child: ClipOval(
+                        child: Icon(Icons.read_more)
+                      ),
+                    )
                   ),
                 ),
                 Padding(
@@ -181,9 +185,11 @@ class _HomeState extends State<Home> {
                     left: 20.0,
                     child: CircleAvatar(
                       radius: 20.0,
-                      backgroundColor: Colors.red,
-                      child: Icon(Icons.person, color: Colors.white),
-                    ),
+                      backgroundColor: Colors.black54,
+                      child: ClipOval(
+                        child: Icon(Icons.space_bar)
+                      ),
+                    )
                   ),
                 ),
 
@@ -235,6 +241,7 @@ class _HomeState extends State<Home> {
   // }
 
   Set<Marker> getmarkers() {
+
     //markers to place on map
     markers.add(Marker(
       //add first marker
@@ -330,13 +337,77 @@ class NewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Profile'),
+        title: Text('Settings'),
       ),
       body: Center(
         child: Text(
-          'Welcome to $userName\'s profile!',
+          'Welcome to $userName\'s page!',
           style: TextStyle(fontSize: 24),
         ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
+  @override
+  State<MapScreen> createState() => _MapScreenState();
+}
+
+class _MapScreenState extends State<MapScreen> {
+  LatLng initialLocation = const LatLng(37.422131, -122.084801);
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
+
+  @override
+  void initState() {
+    addCustomIcon();
+    super.initState();
+  }
+
+  void addCustomIcon() {
+    BitmapDescriptor.fromAssetImage(
+        const ImageConfiguration(), "assets/images/p1.png")
+        .then(
+          (icon) {
+        setState(() {
+          markerIcon = icon;
+        });
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: initialLocation,
+          zoom: 14,
+        ),
+        markers: {
+          Marker(
+            markerId: const MarkerId("marker1"),
+            position: const LatLng(37.422131, -122.084801),
+            draggable: true,
+            onDragEnd: (value) {
+              // value is the new position
+            },
+            icon: markerIcon,
+          ),
+          Marker(
+            markerId: const MarkerId("marker2"),
+            position: const LatLng(37.415768808487435, -122.08440050482749),
+          ),
+        },
       ),
     );
   }

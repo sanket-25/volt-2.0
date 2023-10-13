@@ -61,7 +61,7 @@ class _MapState extends State<Map> {
                   child: GoogleMap(
                     //Map widget from google_maps_flutter package
                     zoomGesturesEnabled: true, //enable Zoom in, out on map
-                    initialCameraPosition: const CameraPosition(
+                    initialCameraPosition: CameraPosition(
                       //innital position in map
                       target: showLocation, //initial position
                       zoom: 15.0, //initial zoom level
@@ -86,12 +86,12 @@ class _MapState extends State<Map> {
               left: 20.0,
               child: CircleAvatar(
                 radius: 20.0,
-                backgroundColor: Colors.red,
+                backgroundColor: Colors.black.withOpacity(0.3),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => NewPage('User 1')),
+                      MaterialPageRoute(builder: (context) => NewPage('Profile Page')),
                     );
                   },
                   child: Icon(Icons.person, color: Colors.white),
@@ -100,17 +100,17 @@ class _MapState extends State<Map> {
             Positioned(
               top: 20.0,
               left: 70.0,
-              child: GestureDetector(
+              child: InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewPage('User 2')),
+                    MaterialPageRoute(builder: (context) => NewPage('Search Page')),
                   );
                 },
                 child: CircleAvatar(
                   radius: 20.0,
-                  backgroundColor: Colors.blue,
-                  child: Icon(Icons.person, color: Colors.white),
+                  backgroundColor: Colors.black.withOpacity(0.3),
+                  child: Icon(Icons.search, color: Colors.white),
                 ),
               ),),
             Positioned(
@@ -120,13 +120,13 @@ class _MapState extends State<Map> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewPage('User 2')),
+                    MaterialPageRoute(builder: (context) => NewPage('Settings Page')),
                   );
                 },
                 child: CircleAvatar(
                   radius: 20.0,
-                  backgroundColor: Colors.green,
-                  child: Icon(Icons.person, color: Colors.white),
+                  backgroundColor: Colors.black.withOpacity(0.3),
+                  child: Icon(Icons.settings, color: Colors.white),
                 ),
               ),),
             Positioned(
@@ -135,7 +135,7 @@ class _MapState extends State<Map> {
                 child: Container(
                     decoration: BoxDecoration(
                       // color: Colors.pink,
-                      color: Colors.grey,
+                      color: Colors.black.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(22),
                       // border: Border.all(
                       //   color: Colors.black,
@@ -147,37 +147,43 @@ class _MapState extends State<Map> {
                         Padding(
                           padding: EdgeInsets.all(2),
                           child: Positioned(
-                            top: 70.0,
-                            left: 20.0,
-                            child: CircleAvatar(
-                              radius: 20.0,
-                              backgroundColor: Colors.red,
-                              child: Icon(Icons.person, color: Colors.white),
-                            ),
+                              top: 70.0,
+                              left: 20.0,
+                              child: CircleAvatar(
+                                radius: 20.0,
+                                backgroundColor: Colors.black54,
+                                child: ClipOval(
+                                    child: Icon(Icons.map)
+                                ),
+                              )
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.all(2),
                           child: Positioned(
-                            top: 70.0,
-                            left: 20.0,
-                            child: CircleAvatar(
-                              radius: 20.0,
-                              backgroundColor: Colors.red,
-                              child: Icon(Icons.person, color: Colors.white),
-                            ),
+                              top: 70.0,
+                              left: 20.0,
+                              child: CircleAvatar(
+                                radius: 20.0,
+                                backgroundColor: Colors.black54,
+                                child: ClipOval(
+                                    child: Icon(Icons.read_more)
+                                ),
+                              )
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.all(2),
                           child: Positioned(
-                            top: 70.0,
-                            left: 20.0,
-                            child: CircleAvatar(
-                              radius: 20.0,
-                              backgroundColor: Colors.red,
-                              child: Icon(Icons.person, color: Colors.white),
-                            ),
+                              top: 70.0,
+                              left: 20.0,
+                              child: CircleAvatar(
+                                radius: 20.0,
+                                backgroundColor: Colors.black54,
+                                child: ClipOval(
+                                    child: Icon(Icons.space_bar)
+                                ),
+                              )
                           ),
                         ),
 

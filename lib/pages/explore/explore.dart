@@ -14,6 +14,7 @@ class Explore extends StatelessWidget {
           preferredSize:
           Size.fromHeight(kToolbarHeight), // Set the height of the AppBar
           child: AppBar(
+            backgroundColor: Colors.red,
             bottom: TabBar(
               tabs: [
                 Tab(text: 'Events'),

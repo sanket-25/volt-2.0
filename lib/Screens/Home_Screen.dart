@@ -10,8 +10,8 @@ import 'package:volt/widget/Story_Banner.dart';
 import 'package:volt/widget/Story_Item.dart';
 import 'package:line_icons/line_icons.dart';
 
-class Feed extends StatelessWidget {
-  const Feed({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Feed extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            // StoryBanner(),
+            StoryBanner(),
             Divider(
               height: 1,
               color: white.withOpacity(0.2),

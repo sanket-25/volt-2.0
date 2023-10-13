@@ -9,11 +9,11 @@ class NewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Profile'),
+        title: Text('Search'),
       ),
       body: Center(
         child: Text(
-          'Welcome to $userName\'s profile!',
+          'Welcome to $userName\ page!',
           style: TextStyle(fontSize: 24),
         ),
       ),

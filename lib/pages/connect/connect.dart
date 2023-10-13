@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:volt/pages/connect/feed.dart';
+import 'package:volt/pages/connect/challenges.dart';
+import 'package:volt/pages/connect/chat.dart';
 // import 'package:volt/nucleus/pages/chat/text.dart';
 
 class Connect extends StatelessWidget {
@@ -8,9 +11,12 @@ class Connect extends StatelessWidget {
       length: 3, // Number of tabs
       child: Scaffold(
         appBar: PreferredSize(
+
           preferredSize:
           Size.fromHeight(kToolbarHeight), // Set the height of the AppBar
           child: AppBar(
+            backgroundColor: Colors.red,
+            toolbarHeight: 20,
             bottom: TabBar(
               tabs: [
                 Tab(text: 'Feed'),
@@ -22,9 +28,9 @@ class Connect extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            EventsScreen(),
-            ClubsScreen(),
-            PostsScreen(),
+            Feed(),
+            Challenges(),
+            Chat(),
           ],
         ),
       ),
